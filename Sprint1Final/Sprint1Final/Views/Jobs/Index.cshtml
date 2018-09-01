@@ -1,0 +1,159 @@
+﻿@model IEnumerable<Sprint1Final.Models.Job>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.jState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SLoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ELoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ETA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dist)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasicCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActArrive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CHeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CLength)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CWidth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AbLoad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MBefore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MAfter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpctFuel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActFuel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Flag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo.CType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.CName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Driver.DName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Truck.Vin)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.jState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SLoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ELoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ETA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dist)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BasicCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActArrive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CHeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CLength)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CWidth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AbLoad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MBefore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MAfter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpctFuel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActFuel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Flag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cargo.CType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.CName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Driver.DName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Truck.Vin)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.JobID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.JobID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.JobID })
+        </td>
+    </tr>
+}
+
+</table>

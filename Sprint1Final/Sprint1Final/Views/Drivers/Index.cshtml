@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Sprint1Final.Models.Driver>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriverID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Licen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adrs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nokCNum)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Licen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adrs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nokCNum)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DriverNo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DriverNo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DriverNo })
+        </td>
+    </tr>
+}
+
+</table>

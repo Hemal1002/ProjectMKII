@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d15fee8ca86d4ac2bdd8f9f4696debe0" Name="Diagram1">
+        <EntityTypeShape EntityType="Sprint1DbModel.Cargo" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sprint1DbModel.Customer" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sprint1DbModel.Driver" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sprint1DbModel.Job" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sprint1DbModel.Truck" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <AssociationConnector Association="Sprint1DbModel.FK__Job__CargoID__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="Sprint1DbModel.FK__Job__CustomerID__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="Sprint1DbModel.FK__Job__DriverNo__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="Sprint1DbModel.FK__Job__TruckID__3F466844" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

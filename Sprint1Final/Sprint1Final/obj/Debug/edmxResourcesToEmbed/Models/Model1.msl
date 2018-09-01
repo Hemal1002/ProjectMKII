@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Sprint1DbModelStoreContainer" CdmEntityContainer="Sprint1DbEntities">
+    <EntitySetMapping Name="Cargoes">
+      <EntityTypeMapping TypeName="Sprint1DbModel.Cargo">
+        <MappingFragment StoreEntitySet="Cargo">
+          <ScalarProperty Name="CargoID" ColumnName="CargoID" />
+          <ScalarProperty Name="CType" ColumnName="CType" />
+          <ScalarProperty Name="HazPer" ColumnName="HazPer" />
+          <ScalarProperty Name="WRate" ColumnName="WRate" />
+          <ScalarProperty Name="DRate" ColumnName="DRate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="Sprint1DbModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="ConNum" ColumnName="ConNum" />
+          <ScalarProperty Name="Adrs" ColumnName="Adrs" />
+          <ScalarProperty Name="PostAdrs" ColumnName="PostAdrs" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="Sprint1DbModel.Driver">
+        <MappingFragment StoreEntitySet="Driver">
+          <ScalarProperty Name="DriverNo" ColumnName="DriverNo" />
+          <ScalarProperty Name="DName" ColumnName="DName" />
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+          <ScalarProperty Name="Licen" ColumnName="Licen" />
+          <ScalarProperty Name="DOE" ColumnName="DOE" />
+          <ScalarProperty Name="Adrs" ColumnName="Adrs" />
+          <ScalarProperty Name="ConNum" ColumnName="ConNum" />
+          <ScalarProperty Name="nokCNum" ColumnName="nokCNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="Sprint1DbModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="jState" ColumnName="jState" />
+          <ScalarProperty Name="SLoc" ColumnName="SLoc" />
+          <ScalarProperty Name="STime" ColumnName="STime" />
+          <ScalarProperty Name="ELoc" ColumnName="ELoc" />
+          <ScalarProperty Name="ETA" ColumnName="ETA" />
+          <ScalarProperty Name="Dist" ColumnName="Dist" />
+          <ScalarProperty Name="BasicCost" ColumnName="BasicCost" />
+          <ScalarProperty Name="ActArrive" ColumnName="ActArrive" />
+          <ScalarProperty Name="CHeight" ColumnName="CHeight" />
+          <ScalarProperty Name="CLength" ColumnName="CLength" />
+          <ScalarProperty Name="CWidth" ColumnName="CWidth" />
+          <ScalarProperty Name="CWeight" ColumnName="CWeight" />
+          <ScalarProperty Name="AbLoad" ColumnName="AbLoad" />
+          <ScalarProperty Name="MBefore" ColumnName="MBefore" />
+          <ScalarProperty Name="MAfter" ColumnName="MAfter" />
+          <ScalarProperty Name="ExpctFuel" ColumnName="ExpctFuel" />
+          <ScalarProperty Name="ActFuel" ColumnName="ActFuel" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CargoID" ColumnName="CargoID" />
+          <ScalarProperty Name="DriverNo" ColumnName="DriverNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trucks">
+      <EntityTypeMapping TypeName="Sprint1DbModel.Truck">
+        <MappingFragment StoreEntitySet="Truck">
+          <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+          <ScalarProperty Name="Vin" ColumnName="Vin" />
+          <ScalarProperty Name="LP" ColumnName="LP" />
+          <ScalarProperty Name="Tstat" ColumnName="Tstat" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Chassis" ColumnName="Chassis" />
+          <ScalarProperty Name="Cabin" ColumnName="Cabin" />
+          <ScalarProperty Name="Engine" ColumnName="Engine" />
+          <ScalarProperty Name="Steering" ColumnName="Steering" />
+          <ScalarProperty Name="Powert" ColumnName="Powert" />
+          <ScalarProperty Name="Torque" ColumnName="Torque" />
+          <ScalarProperty Name="GearBox" ColumnName="GearBox" />
+          <ScalarProperty Name="TankCap" ColumnName="TankCap" />
+          <ScalarProperty Name="Milage" ColumnName="Milage" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="MaxLoad" ColumnName="MaxLoad" />
+          <ScalarProperty Name="PDate" ColumnName="PDate" />
+          <ScalarProperty Name="LSD" ColumnName="LSD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

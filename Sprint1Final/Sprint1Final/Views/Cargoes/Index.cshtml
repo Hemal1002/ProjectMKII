@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Sprint1Final.Models.Cargo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HazPer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WRate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DRate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HazPer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DRate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CargoID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CargoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CargoID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,200 @@
+﻿@model Sprint1Final.Models.Job
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Job</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.jState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SLoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SLoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ELoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ELoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ETA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ETA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dist)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dist)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BasicCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BasicCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActArrive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActArrive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CHeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CHeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CWidth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CWidth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AbLoad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AbLoad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MBefore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MBefore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MAfter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAfter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpctFuel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpctFuel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActFuel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActFuel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Flag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Flag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cargo.CType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cargo.CType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.CName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.CName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver.DName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.DName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Truck.Vin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Truck.Vin)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

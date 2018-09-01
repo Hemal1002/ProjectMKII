@@ -1,0 +1,74 @@
+﻿@model Sprint1Final.Models.Driver
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Driver</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DriverID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DriverID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Licen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Licen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adrs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adrs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nokCNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nokCNum)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DriverNo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

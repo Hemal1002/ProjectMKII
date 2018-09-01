@@ -1,0 +1,455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Sprint1DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cargo">
+          <Key>
+            <PropertyRef Name="CargoID" />
+          </Key>
+          <Property Name="CargoID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HazPer" Type="float" Nullable="false" />
+          <Property Name="WRate" Type="float" Nullable="false" />
+          <Property Name="DRate" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConNum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adrs" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostAdrs" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="DriverNo" />
+          </Key>
+          <Property Name="DriverNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DriverID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Licen" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOE" Type="datetime" Nullable="false" />
+          <Property Name="Adrs" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConNum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nokCNum" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobID" />
+          </Key>
+          <Property Name="JobID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="jState" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SLoc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STime" Type="datetime" Nullable="false" />
+          <Property Name="ELoc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ETA" Type="datetime" Nullable="false" />
+          <Property Name="Dist" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="BasicCost" Type="float" Nullable="false" />
+          <Property Name="ActArrive" Type="datetime" />
+          <Property Name="CHeight" Type="float" Nullable="false" />
+          <Property Name="CLength" Type="float" Nullable="false" />
+          <Property Name="CWidth" Type="float" Nullable="false" />
+          <Property Name="CWeight" Type="float" Nullable="false" />
+          <Property Name="AbLoad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MBefore" Type="float" Nullable="false" />
+          <Property Name="MAfter" Type="float" />
+          <Property Name="ExpctFuel" Type="float" Nullable="false" />
+          <Property Name="ActFuel" Type="float" />
+          <Property Name="Flag" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TruckID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CustomerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CargoID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DriverNo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Truck">
+          <Key>
+            <PropertyRef Name="TruckID" />
+          </Key>
+          <Property Name="TruckID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vin" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tstat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Make" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Chassis" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cabin" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Engine" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Steering" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Powert" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Torque" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GearBox" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TankCap" Type="int" Nullable="false" />
+          <Property Name="Milage" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="float" Nullable="false" />
+          <Property Name="MaxLoad" Type="float" Nullable="false" />
+          <Property Name="PDate" Type="date" Nullable="false" />
+          <Property Name="LSD" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Job__CargoID__412EB0B6">
+          <End Role="Cargo" Type="Self.Cargo" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargo">
+              <PropertyRef Name="CargoID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="CargoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__CustomerID__403A8C7D">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__DriverNo__4222D4EF">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverNo" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="DriverNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__TruckID__3F466844">
+          <End Role="Truck" Type="Self.Truck" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Truck">
+              <PropertyRef Name="TruckID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="TruckID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Sprint1DbModelStoreContainer">
+          <EntitySet Name="Cargo" EntityType="Self.Cargo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Truck" EntityType="Self.Truck" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Job__CargoID__412EB0B6" Association="Self.FK__Job__CargoID__412EB0B6">
+            <End Role="Cargo" EntitySet="Cargo" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__CustomerID__403A8C7D" Association="Self.FK__Job__CustomerID__403A8C7D">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__DriverNo__4222D4EF" Association="Self.FK__Job__DriverNo__4222D4EF">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__TruckID__3F466844" Association="Self.FK__Job__TruckID__3F466844">
+            <End Role="Truck" EntitySet="Truck" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Sprint1DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cargo">
+          <Key>
+            <PropertyRef Name="CargoID" />
+          </Key>
+          <Property Name="CargoID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HazPer" Type="Double" Nullable="false" />
+          <Property Name="WRate" Type="Double" Nullable="false" />
+          <Property Name="DRate" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Jobs" Relationship="Self.FK__Job__CargoID__412EB0B6" FromRole="Cargo" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ConNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adrs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PostAdrs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Jobs" Relationship="Self.FK__Job__CustomerID__403A8C7D" FromRole="Customer" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="DriverNo" />
+          </Key>
+          <Property Name="DriverNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DriverID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Licen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Adrs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ConNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nokCNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Jobs" Relationship="Self.FK__Job__DriverNo__4222D4EF" FromRole="Driver" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobID" />
+          </Key>
+          <Property Name="JobID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="jState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SLoc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ELoc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ETA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Dist" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BasicCost" Type="Double" Nullable="false" />
+          <Property Name="ActArrive" Type="DateTime" Precision="3" />
+          <Property Name="CHeight" Type="Double" Nullable="false" />
+          <Property Name="CLength" Type="Double" Nullable="false" />
+          <Property Name="CWidth" Type="Double" Nullable="false" />
+          <Property Name="CWeight" Type="Double" Nullable="false" />
+          <Property Name="AbLoad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MBefore" Type="Double" Nullable="false" />
+          <Property Name="MAfter" Type="Double" />
+          <Property Name="ExpctFuel" Type="Double" Nullable="false" />
+          <Property Name="ActFuel" Type="Double" />
+          <Property Name="Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TruckID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CargoID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DriverNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cargo" Relationship="Self.FK__Job__CargoID__412EB0B6" FromRole="Job" ToRole="Cargo" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Job__CustomerID__403A8C7D" FromRole="Job" ToRole="Customer" />
+          <NavigationProperty Name="Driver" Relationship="Self.FK__Job__DriverNo__4222D4EF" FromRole="Job" ToRole="Driver" />
+          <NavigationProperty Name="Truck" Relationship="Self.FK__Job__TruckID__3F466844" FromRole="Job" ToRole="Truck" />
+        </EntityType>
+        <EntityType Name="Truck">
+          <Key>
+            <PropertyRef Name="TruckID" />
+          </Key>
+          <Property Name="TruckID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Vin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tstat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Make" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Chassis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cabin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Engine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Steering" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Powert" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Torque" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GearBox" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TankCap" Type="Int32" Nullable="false" />
+          <Property Name="Milage" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Double" Nullable="false" />
+          <Property Name="MaxLoad" Type="Double" Nullable="false" />
+          <Property Name="PDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LSD" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Jobs" Relationship="Self.FK__Job__TruckID__3F466844" FromRole="Truck" ToRole="Job" />
+        </EntityType>
+        <Association Name="FK__Job__CargoID__412EB0B6">
+          <End Role="Cargo" Type="Self.Cargo" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargo">
+              <PropertyRef Name="CargoID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="CargoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__CustomerID__403A8C7D">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__DriverNo__4222D4EF">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="DriverNo" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="DriverNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__TruckID__3F466844">
+          <End Role="Truck" Type="Self.Truck" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Truck">
+              <PropertyRef Name="TruckID" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="TruckID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Sprint1DbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cargoes" EntityType="Self.Cargo" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Drivers" EntityType="Self.Driver" />
+          <EntitySet Name="Jobs" EntityType="Self.Job" />
+          <EntitySet Name="Trucks" EntityType="Self.Truck" />
+          <AssociationSet Name="FK__Job__CargoID__412EB0B6" Association="Self.FK__Job__CargoID__412EB0B6">
+            <End Role="Cargo" EntitySet="Cargoes" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__CustomerID__403A8C7D" Association="Self.FK__Job__CustomerID__403A8C7D">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__DriverNo__4222D4EF" Association="Self.FK__Job__DriverNo__4222D4EF">
+            <End Role="Driver" EntitySet="Drivers" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__TruckID__3F466844" Association="Self.FK__Job__TruckID__3F466844">
+            <End Role="Truck" EntitySet="Trucks" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Sprint1DbModelStoreContainer" CdmEntityContainer="Sprint1DbEntities">
+          <EntitySetMapping Name="Cargoes">
+            <EntityTypeMapping TypeName="Sprint1DbModel.Cargo">
+              <MappingFragment StoreEntitySet="Cargo">
+                <ScalarProperty Name="CargoID" ColumnName="CargoID" />
+                <ScalarProperty Name="CType" ColumnName="CType" />
+                <ScalarProperty Name="HazPer" ColumnName="HazPer" />
+                <ScalarProperty Name="WRate" ColumnName="WRate" />
+                <ScalarProperty Name="DRate" ColumnName="DRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="Sprint1DbModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CName" ColumnName="CName" />
+                <ScalarProperty Name="ConNum" ColumnName="ConNum" />
+                <ScalarProperty Name="Adrs" ColumnName="Adrs" />
+                <ScalarProperty Name="PostAdrs" ColumnName="PostAdrs" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drivers">
+            <EntityTypeMapping TypeName="Sprint1DbModel.Driver">
+              <MappingFragment StoreEntitySet="Driver">
+                <ScalarProperty Name="DriverNo" ColumnName="DriverNo" />
+                <ScalarProperty Name="DName" ColumnName="DName" />
+                <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+                <ScalarProperty Name="Licen" ColumnName="Licen" />
+                <ScalarProperty Name="DOE" ColumnName="DOE" />
+                <ScalarProperty Name="Adrs" ColumnName="Adrs" />
+                <ScalarProperty Name="ConNum" ColumnName="ConNum" />
+                <ScalarProperty Name="nokCNum" ColumnName="nokCNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="Sprint1DbModel.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="jState" ColumnName="jState" />
+                <ScalarProperty Name="SLoc" ColumnName="SLoc" />
+                <ScalarProperty Name="STime" ColumnName="STime" />
+                <ScalarProperty Name="ELoc" ColumnName="ELoc" />
+                <ScalarProperty Name="ETA" ColumnName="ETA" />
+                <ScalarProperty Name="Dist" ColumnName="Dist" />
+                <ScalarProperty Name="BasicCost" ColumnName="BasicCost" />
+                <ScalarProperty Name="ActArrive" ColumnName="ActArrive" />
+                <ScalarProperty Name="CHeight" ColumnName="CHeight" />
+                <ScalarProperty Name="CLength" ColumnName="CLength" />
+                <ScalarProperty Name="CWidth" ColumnName="CWidth" />
+                <ScalarProperty Name="CWeight" ColumnName="CWeight" />
+                <ScalarProperty Name="AbLoad" ColumnName="AbLoad" />
+                <ScalarProperty Name="MBefore" ColumnName="MBefore" />
+                <ScalarProperty Name="MAfter" ColumnName="MAfter" />
+                <ScalarProperty Name="ExpctFuel" ColumnName="ExpctFuel" />
+                <ScalarProperty Name="ActFuel" ColumnName="ActFuel" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CargoID" ColumnName="CargoID" />
+                <ScalarProperty Name="DriverNo" ColumnName="DriverNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trucks">
+            <EntityTypeMapping TypeName="Sprint1DbModel.Truck">
+              <MappingFragment StoreEntitySet="Truck">
+                <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+                <ScalarProperty Name="Vin" ColumnName="Vin" />
+                <ScalarProperty Name="LP" ColumnName="LP" />
+                <ScalarProperty Name="Tstat" ColumnName="Tstat" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Chassis" ColumnName="Chassis" />
+                <ScalarProperty Name="Cabin" ColumnName="Cabin" />
+                <ScalarProperty Name="Engine" ColumnName="Engine" />
+                <ScalarProperty Name="Steering" ColumnName="Steering" />
+                <ScalarProperty Name="Powert" ColumnName="Powert" />
+                <ScalarProperty Name="Torque" ColumnName="Torque" />
+                <ScalarProperty Name="GearBox" ColumnName="GearBox" />
+                <ScalarProperty Name="TankCap" ColumnName="TankCap" />
+                <ScalarProperty Name="Milage" ColumnName="Milage" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="MaxLoad" ColumnName="MaxLoad" />
+                <ScalarProperty Name="PDate" ColumnName="PDate" />
+                <ScalarProperty Name="LSD" ColumnName="LSD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

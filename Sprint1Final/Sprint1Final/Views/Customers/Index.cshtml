@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Sprint1Final.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adrs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostAdrs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adrs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostAdrs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CustomerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID })
+        </td>
+    </tr>
+}
+
+</table>

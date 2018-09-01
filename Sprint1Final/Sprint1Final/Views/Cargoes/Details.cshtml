@@ -1,0 +1,50 @@
+﻿@model Sprint1Final.Models.Cargo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cargo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HazPer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HazPer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DRate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CargoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

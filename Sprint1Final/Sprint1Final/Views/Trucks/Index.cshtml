@@ -1,0 +1,135 @@
+﻿@model IEnumerable<Sprint1Final.Models.Truck>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Vin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tstat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Make)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Chassis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cabin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Engine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Steering)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Powert)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Torque)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GearBox)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TankCap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Milage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxLoad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LSD)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tstat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chassis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cabin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Engine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Steering)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Powert)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Torque)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GearBox)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TankCap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Milage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxLoad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LSD)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TruckID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TruckID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TruckID })
+        </td>
+    </tr>
+}
+
+</table>
