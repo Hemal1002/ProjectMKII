@@ -12,8 +12,11 @@ namespace Sprint1Final.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.ComponentModel;
-    
+    using System.Linq;
+    using System.Data.Entity;
+
     public partial class Cargo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,10 +26,24 @@ namespace Sprint1Final.Models
         }
     
         [Key]
+        [Required]
+        [DisplayName("Cargo ID")]
         public string CargoID { get; set; }
+
+        [Required]
+        [DisplayName("Cargo Type")]
         public string CType { get; set; }
+
+        [Required]
+        [DisplayName("Rate")]
         public double HazPer { get; set; }
+
+        [Required]
+        [DisplayName("Weight Rate")]
         public double WRate { get; set; }
+
+        [Required]
+        [DisplayName("Distance Rate")]
         public double DRate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

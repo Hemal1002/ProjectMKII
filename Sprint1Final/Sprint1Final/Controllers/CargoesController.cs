@@ -15,9 +15,29 @@ namespace Sprint1Final.Controllers
         private Sprint1DbEntities db = new Sprint1DbEntities();
 
         // GET: Cargoes
-        public ActionResult Index()
+        public ActionResult Index(string option, string search)
         {
-            return View(db.Cargoes.ToList());
+            if (option == "CType")
+            {
+                return View(db.Cargoes.Where(x => x.CType == search || search == null).ToList());
+            }
+            else if (option == "Rate")
+            {
+                return View(db.Cargoes.Where(x => x.HazPer.ToString() == search || search == null).ToList());
+            }
+            else if (option == "WeightR")
+            {
+                return View(db.Cargoes.Where(x => x.WRate.ToString() == search || search == null).ToList());
+            }
+            else if (option == "DR")
+            {
+                return View(db.Cargoes.Where(x => x.DRate.ToString() == search || search == null).ToList());
+            }
+            else
+            {
+                return View(db.Cargoes.Where(x => x.CargoID.StartsWith(search) || search == null).ToList());
+            }
+            
         }
 
         // GET: Cargoes/Details/5

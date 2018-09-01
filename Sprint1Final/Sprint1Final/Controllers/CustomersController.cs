@@ -15,9 +15,24 @@ namespace Sprint1Final.Controllers
         private Sprint1DbEntities db = new Sprint1DbEntities();
 
         // GET: Customers
-        public ActionResult Index()
+        public ActionResult Index(string option, string search)
         {
-            return View(db.Customers.ToList());
+            if (option == "CName")
+            {
+                return View(db.Customers.Where(x => x.CName == search || search == null).ToList());
+            }
+            else if (option == "CNum")
+            {
+                return View(db.Customers.Where(x => x.ConNum == search || search == null).ToList());
+            }
+            else if (option == "em")
+            {
+                return View(db.Customers.Where(x => x.Email == search || search == null).ToList());
+            }
+            else
+            {
+                return View(db.Customers.Where(x => x.CustomerID == search || search == null).ToList());
+            }
         }
 
         // GET: Customers/Details/5

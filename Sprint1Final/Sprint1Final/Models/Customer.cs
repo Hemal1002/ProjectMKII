@@ -12,8 +12,11 @@ namespace Sprint1Final.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.ComponentModel;
-    
+    using System.Linq;
+    using System.Data.Entity;
+
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,13 +26,24 @@ namespace Sprint1Final.Models
         }
         
         [Key]
+        [Required]
+        [DisplayName("Customer ID")]
         public string CustomerID { get; set; }
+        [Required]
+        [DisplayName("Custmoer Name")]
         public string CName { get; set; }
+        [Required]
+        [DisplayName("Contact Number")]
         public string ConNum { get; set; }
+        [Required]
+        [DisplayName("Address")]
         public string Adrs { get; set; }
+        [Required]
+        [DisplayName("Postal Address")]
         public string PostAdrs { get; set; }
+        [Required]
         public string Email { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Job> Jobs { get; set; }
     }
