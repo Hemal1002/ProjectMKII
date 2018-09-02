@@ -6,6 +6,16 @@
 
 <h2>Index</h2>
 
+@using (Html.BeginForm("Index", "Trucks", FormMethod.Get))
+{
+
+    <b>Search by : </b> @Html.RadioButton("option", "TruckID")  <text> Truck ID</text>
+    @Html.RadioButton("option", "vn") <text>VIN Number</text>  @Html.RadioButton("option", "lp") <text>License Plate</text>
+    @Html.RadioButton("option", "ts") <text>Truck status</text> @Html.RadioButton("option", "make") <text>Make</text>
+    @Html.RadioButton("option", "ch") <text>Chassis</text>
+    @Html.TextBox("Search"); <input type="submit" value="Search" />
+}
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

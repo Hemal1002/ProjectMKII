@@ -4,7 +4,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>
+    Customer table
+</h2>
+@using (Html.BeginForm("Index", "Customers", FormMethod.Get))
+{
+
+    <b>Search by : </b> @Html.RadioButton("option", "CustID")  <text> Customer ID</text>
+    @Html.RadioButton("option", "CName") <text>Customer Name</text>  @Html.RadioButton("option", "CNum") <text>Contact Number</text>
+    @Html.RadioButton("option", "em") <text>Email</text>
+    @Html.TextBox("Search"); <input type="submit" value="Search" />
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
