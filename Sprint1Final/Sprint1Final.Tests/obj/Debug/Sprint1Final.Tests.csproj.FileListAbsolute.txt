@@ -47,7 +47,6 @@ C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debu
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\ApplicationInsights.config
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Sprint1Final.Tests.dll
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Sprint1Final.Tests.pdb
-C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Sprint1Final.dll
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\EntityFramework.dll
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\System.Web.Mvc.dll
@@ -57,7 +56,6 @@ C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debu
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Sprint1Final.pdb
-C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\EntityFramework.xml
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\System.Web.Mvc.xml
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\System.Web.Razor.xml
