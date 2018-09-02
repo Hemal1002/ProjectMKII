@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Sprint1Final.Models.Cargo>
+﻿
+@model PagedList.IPagedList<Sprint1Final.Models.Cargo>
+    @using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -11,7 +14,7 @@
     <b>Search by : </b> @Html.RadioButton("option", "CargoID")  <text> Cargo ID</text>
     @Html.RadioButton("option", "CType") <text>Cargo Type</text>  @Html.RadioButton("option", "Rate") <text>Cargo Rate</text>
     @Html.RadioButton("option", "WeightR") <text>Weight rate</text> @Html.RadioButton("option", "DR") <text>Distance Rate</text>
-    @Html.TextBox("Search"); <input type="submit" value="Search" />
+    @Html.TextBox("Search",ViewBag.CurrentFilter as string); <input type="submit" value="Search" />
 }
 
 <p>
@@ -20,21 +23,29 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CType)
+           @Html.ActionLink("Cargo Type", "Index", new { sortOrder = ViewBag.CargoTypeSortParm, currentFilter = ViewBag.CurrentFilter }) 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HazPer)
+            @Html.ActionLink("Cargo Rate", "Index", new { sortOrder = ViewBag.CargoRateSortParm, currentFilter = ViewBag.CurrentFilter }) 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WRate)
+            @Html.ActionLink("Weight Rate", "Index", new { sortOrder = ViewBag.WeightRate, currentFilter = ViewBag.CurrentFilter }) 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DRate)
+            @Html.ActionLink("Distance Rate", "Index", new { sortOrder = ViewBag.DistanceRate, currentFilter = ViewBag.CurrentFilter }) 
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+   @if (Model.Count() == 0)
+   { <tr> <td colspan = "3" > Records not found </td>
+    </tr >
+   }
+   else
+   {
+
+       foreach (var item in Model)
+       {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.CType)
@@ -49,11 +60,17 @@
             @Html.DisplayFor(modelItem => item.DRate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CargoID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CargoID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CargoID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.CargoID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CargoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CargoID })
         </td>
     </tr>
-}
+       }
+   }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

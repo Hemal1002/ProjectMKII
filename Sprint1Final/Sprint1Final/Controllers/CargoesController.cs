@@ -7,7 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sprint1Final.Models;
-
+using PagedList;
+using PagedList.Mvc;
 namespace Sprint1Final.Controllers
 {
     public class CargoesController : Controller
@@ -15,28 +16,78 @@ namespace Sprint1Final.Controllers
         private Sprint1DbEntities db = new Sprint1DbEntities();
 
         // GET: Cargoes
-        public ActionResult Index(string option, string search)
+        public ActionResult Index(string option, string search, string sortOrder , string currentFilter , int? page)
         {
-            if (option == "CType")
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.CargoTypeSortParm = String.IsNullOrEmpty(sortOrder) ? "cargo_desc" : "";
+            ViewBag.CargoRateSortParm = sortOrder == "Rate" ? "rate_desc" : "Rate";
+            ViewBag.WeightRate = sortOrder =="Weight" ? "weight_desc" : "Weight";
+            ViewBag.DistanceRate = sortOrder == "Dist" ? "dist_rate" : "Dist";
+            if (search!=null)
             {
-                return View(db.Cargoes.Where(x => x.CType == search || search == null).ToList());
-            }
-            else if (option == "Rate")
-            {
-                return View(db.Cargoes.Where(x => x.HazPer.ToString() == search || search == null).ToList());
-            }
-            else if (option == "WeightR")
-            {
-                return View(db.Cargoes.Where(x => x.WRate.ToString() == search || search == null).ToList());
-            }
-            else if (option == "DR")
-            {
-                return View(db.Cargoes.Where(x => x.DRate.ToString() == search || search == null).ToList());
+                page = 1;
             }
             else
             {
-                return View(db.Cargoes.Where(x => x.CargoID.StartsWith(search) || search == null).ToList());
+                search = currentFilter;
             }
+            ViewBag.CurrentFilter = search;
+            var cargo = from c in db.Cargoes
+                        select c;
+            if (option == "CType")
+            {
+                cargo = cargo.Where(x => x.CType == search || search == null);
+            }
+            else if (option == "Rate")
+            {
+                cargo = cargo.Where(x => x.HazPer.ToString() == search || search == null);
+            }
+            else if (option == "WeightR")
+            {
+                cargo = cargo.Where(x => x.WRate.ToString() == search || search == null);
+            }
+            else if (option == "DR")
+            {
+                cargo = cargo.Where(x => x.DRate.ToString() == search || search == null);
+            }
+            else
+            {
+                cargo = cargo.Where(x => x.CargoID.StartsWith(search) || search == null);
+            }
+
+            switch (sortOrder)
+            {
+                case "cargo_desc":
+                    cargo = cargo.OrderByDescending(c => c.CType);
+                    break;
+                case "Rate":
+                    cargo = cargo.OrderBy(c => c.HazPer);
+                        break;
+                case "rate_desc":
+                    cargo = cargo.OrderByDescending(c => c.HazPer);
+                    break;
+                case "Weight":
+                    cargo = cargo.OrderBy(c => c.WRate);
+                    break;
+                case "weight_desc":
+                    cargo = cargo.OrderByDescending(c => c.WRate);
+                    break;
+                case "Dist":
+                    cargo = cargo.OrderBy(c => c.DRate);
+                    break;
+                case "dist_rate":
+                    cargo = cargo.OrderByDescending(c => c.DRate);
+                    break;
+                default:
+                    cargo = cargo.OrderBy(c => c.CType);
+                    break;
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(cargo.ToPagedList(pageNumber, pageSize));
+
+            
             
         }
 

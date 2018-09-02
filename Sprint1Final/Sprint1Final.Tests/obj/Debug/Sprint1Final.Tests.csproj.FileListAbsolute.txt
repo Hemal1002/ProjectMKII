@@ -67,3 +67,6 @@ C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debu
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\obj\Debug\Sprint1Final.Tests.csprojResolveAssemblyReference.cache
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\obj\Debug\Sprint1Final.Tests.dll
 C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\obj\Debug\Sprint1Final.Tests.pdb
+C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Sprint1Final.Tests.dll.config
+C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\PagedList.dll
+C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\PagedList.xml
