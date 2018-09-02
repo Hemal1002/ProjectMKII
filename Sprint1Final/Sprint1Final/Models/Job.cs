@@ -129,11 +129,15 @@ namespace Sprint1Final.Models
             return a;
         }
 
+        public string x = "";
+
         public DateTime calcETA()
         {
             int a = 0;
 
-            if (checkAbLoad() == "Abnormal")
+            x = checkAbLoad();
+
+            if (x == "Abnormal")
             {
                 a = int.Parse(Dist) / 40;
             }
