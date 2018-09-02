@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sprint1Final.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Sprint1Final.Controllers
 {
@@ -15,9 +17,60 @@ namespace Sprint1Final.Controllers
         private Sprint1DbEntities db = new Sprint1DbEntities();
 
         // GET: Drivers
-        public ActionResult Index()
+        public ActionResult Index(string option, string search, string sortOrder, string currentFilter, int? page)
         {
-            return View(db.Drivers.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            if (search != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                search = currentFilter;
+            }
+            ViewBag.CurrentFilter = search;
+            var driver = from d in db.Drivers select d;
+            if (option=="dname")
+            {
+                driver = (driver.Where(x => x.DName == search || search == null));
+            }
+            else if (option=="did")
+            {
+                driver = (driver.Where(x => x.DriverID== search || search == null));
+            }
+            else if (option=="lic")
+            {
+                driver = (driver.Where(x => x.Licen== search || search == null));
+            }
+            else if (option=="cnum")
+            {
+                driver = (driver.Where(x => x.ConNum == search || search == null));
+            }
+            else 
+            {
+                driver = driver.Where(x => x.DriverNo.StartsWith(search) || search == null);
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    driver = driver.OrderByDescending(d => d.DName);
+                    break;
+                case "Date":
+                    driver = driver.OrderBy(d => d.DOE);
+                    break;
+                case "date_desc":
+                    driver = driver.OrderByDescending(d => d.DOE);
+                    break;
+                default:
+                    driver = driver.OrderBy(d => d.DName);
+                    break;
+            }
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(driver.ToPagedList(pageNumber, pageSize));
+            
         }
 
         // GET: Drivers/Details/5

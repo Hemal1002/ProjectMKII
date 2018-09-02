@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
+
 using Sprint1Final.Models;
 
 namespace Sprint1Final.Controllers
@@ -15,24 +18,51 @@ namespace Sprint1Final.Controllers
         private Sprint1DbEntities db = new Sprint1DbEntities();
 
         // GET: Customers
-        public ActionResult Index(string option, string search)
+        public ActionResult Index(string option, string search, string sortOrder, string currentFilter, int? page)
         {
-            if (option == "CName")
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.CustNameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            if (search!=null)
             {
-                return View(db.Customers.Where(x => x.CName == search || search == null).ToList());
-            }
-            else if (option == "CNum")
-            {
-                return View(db.Customers.Where(x => x.ConNum == search || search == null).ToList());
-            }
-            else if (option == "em")
-            {
-                return View(db.Customers.Where(x => x.Email == search || search == null).ToList());
+                page = 1;
             }
             else
             {
-                return View(db.Customers.Where(x => x.CustomerID == search || search == null).ToList());
+                search = currentFilter;
             }
+            ViewBag.CurrentFilter = search;
+            var customer = from c in db.Customers select c;
+
+            if (option == "CName")
+            {
+                customer = customer.Where(x => x.CName == search || search == null);
+            }
+            else if (option == "CNum")
+            {
+                customer = customer.Where(x => x.ConNum == search || search == null);
+            }
+            else if (option == "em")
+            {
+                customer = customer.Where(x => x.Email == search || search == null);
+            }
+            else
+            {
+                customer = customer.Where(x => x.CustomerID == search || search == null);
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    customer = customer.OrderByDescending(c => c.CName);
+                    break;
+              
+                default:
+                    customer = customer.OrderBy(c => c.CName);
+                    break;
+            }
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(customer.ToPagedList(pageNumber, pageSize));
+            
         }
 
         // GET: Customers/Details/5

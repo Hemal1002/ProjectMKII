@@ -30,7 +30,7 @@ namespace Sprint1Final.Models
         [DisplayName("Customer ID")]
         public string CustomerID { get; set; }
         [Required]
-        [DisplayName("Custmoer Name")]
+        [DisplayName("Customer Name")]
         public string CName { get; set; }
         [Required]
         [DisplayName("Contact Number")]

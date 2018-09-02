@@ -13,7 +13,6 @@ C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Deb
 C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\roslyn\VBCSCompiler.exe.config
 C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Sprint1Final.Tests.dll
 C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Sprint1Final.Tests.pdb
-C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Sprint1Final.dll
 C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\EntityFramework.dll
 C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\System.Web.Mvc.dll

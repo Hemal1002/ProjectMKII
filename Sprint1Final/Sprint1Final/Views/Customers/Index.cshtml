@@ -1,4 +1,8 @@
-﻿@model IEnumerable<Sprint1Final.Models.Customer>
+﻿
+@model PagedList.IPagedList<Sprint1Final.Models.Customer>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 
 @{
     ViewBag.Title = "Index";
@@ -13,7 +17,7 @@
     <b>Search by : </b> @Html.RadioButton("option", "CustID")  <text> Customer ID</text>
     @Html.RadioButton("option", "CName") <text>Customer Name</text>  @Html.RadioButton("option", "CNum") <text>Contact Number</text>
     @Html.RadioButton("option", "em") <text>Email</text>
-    @Html.TextBox("Search"); <input type="submit" value="Search" />
+    @Html.TextBox("Search", ViewBag.CurrentFilter as string); <input type="submit" value="Search" />
 }
 
 <p>
@@ -22,24 +26,34 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CName)
+            @Html.ActionLink("Customer Name", "Index", new { sortOrder = ViewBag.CustNameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ConNum)
+            Contact Number
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Adrs)
+            Address
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PostAdrs)
+            Postal Address
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            Email
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@if (Model.Count() == 0)
+{
+    <tr>
+        <td colspan="3"> Records not found </td>
+    </tr>
+}
+else
+{
+
+    foreach (var item in Model)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.CName)
@@ -57,11 +71,18 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
         </td>
     </tr>
+    }
 }
-
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
