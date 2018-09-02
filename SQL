@@ -1,0 +1,85 @@
+create database Sprint1Db
+
+use Sprint1Db
+
+create table Customer
+(
+    CustomerID varchar(50) Not Null Primary Key,
+    CName varchar(50) Not Null,
+    ConNum varchar(50) Not Null,
+    Adrs varchar(50) Not Null,
+    PostAdrs varchar(50) Not Null,
+    Email varchar(50) Not Null,
+);
+
+create table Driver
+(
+    DriverNo varchar(50) Not Null Primary Key,
+    DName varchar(50) Not Null,
+    DriverID varchar(50) Not Null,
+    Licen varchar(50) Not Null,
+    DOE datetime Not Null,
+    Adrs varchar(50) Not Null,
+    ConNum varchar(50) Not Null,
+    nokCNum varchar(50) Not Null,
+);
+
+create table Cargo
+(
+    CargoID varchar(50) Not Null Primary Key,
+    CType varchar(50) Not Null,
+    HazPer float Not Null,
+    WRate float Not Null,
+    DRate float Not Null
+);
+
+create table Truck
+(
+    TruckID varchar(50) Not Null primary Key,
+    Vin varchar(50) Not Null,
+    LP varchar(50) Not Null,
+    Tstat varchar(50) Not Null,
+    Make varchar(50) Not Null,
+    Model varchar(50) Not Null,
+    Chassis varchar(50) Not Null,
+    Cabin varchar(50) Not Null,
+    Engine varchar(50) Not Null,
+    Steering varchar(50) Not Null,
+    Powert varchar(50) Not Null,
+    Torque varchar(50) Not Null,
+    GearBox varchar(50) Not Null,
+    TankCap int Not Null,
+    Milage int Not Null,
+    Weight float Not Null,
+    MaxLoad float Not Null,
+    PDate date Not Null,
+    LSD datetime Not Null,
+
+);
+
+Create table Job
+(
+    JobID Varchar(50) Not Null Primary Key,
+    jState varchar(50) Not Null, 
+    SLoc varchar(50) Not Null,
+    STime datetime Not Null,
+    ELoc varchar(50) Not Null,
+    ETA datetime Not Null,
+    Dist varchar(7) Not Null,
+    BasicCost float Not Null,
+    ActArrive datetime,
+    CHeight float Not Null,
+    CLength float Not Null,
+    CWidth float Not Null,
+    CWeight float Not Null,
+    AbLoad Varchar(50) Not Null,
+    MBefore float Not Null,
+    MAfter float,
+    ExpctFuel float Not Null,
+    ActFuel float,
+    Flag varchar(50) Not Null,
+    TruckID Varchar(50) Not Null foreign key references Truck(TruckID),
+    CustomerID Varchar(50) Not Null foreign key references Customer(CustomerID),
+    CargoID Varchar(50) Not Null foreign key references Cargo(CargoID),
+    DriverNo Varchar(50) Not Null foreign key references Driver(DriverNo),
+);
