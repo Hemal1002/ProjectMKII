@@ -4,6 +4,8 @@
     ViewBag.Title = "Index";
 }
 
+    
+
 <h2>Index</h2>
 
 @using (Html.BeginForm("Index", "Jobs1", FormMethod.Get))
@@ -21,6 +23,9 @@
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.JobID)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.jState)
         </th>
@@ -42,6 +47,7 @@
         <th>
             @Html.DisplayNameFor(model => model.BasicCost)
         </th>
+<!--
         <th>
             @Html.DisplayNameFor(model => model.ActArrive)
         </th>
@@ -57,9 +63,11 @@
         <th>
             @Html.DisplayNameFor(model => model.CWeight)
         </th>
+-->
         <th>
             @Html.DisplayNameFor(model => model.AbLoad)
         </th>
+<!--
         <th>
             @Html.DisplayNameFor(model => model.MBefore)
         </th>
@@ -72,6 +80,7 @@
         <th>
             @Html.DisplayNameFor(model => model.ActFuel)
         </th>
+-->
         <th>
             @Html.DisplayNameFor(model => model.Flag)
         </th>
@@ -93,6 +102,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.JobID)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.jState)
         </td>
         <td>
@@ -113,6 +125,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.BasicCost)
         </td>
+<!--
         <td>
             @Html.DisplayFor(modelItem => item.ActArrive)
         </td>
@@ -128,9 +141,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.CWeight)
         </td>
+-->
         <td>
             @Html.DisplayFor(modelItem => item.AbLoad)
         </td>
+<!--
         <td>
             @Html.DisplayFor(modelItem => item.MBefore)
         </td>
@@ -143,6 +158,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.ActFuel)
         </td>
+-->
         <td>
             @Html.DisplayFor(modelItem => item.Flag)
         </td>

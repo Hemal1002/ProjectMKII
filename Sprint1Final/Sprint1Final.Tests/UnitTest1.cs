@@ -46,14 +46,17 @@ namespace Sprint1Final.Models.Tests
         public void calcBasicCostTest()
         {
             Job obj = new Job();
+            
 
 
-            obj.x = "Abnormal";
-            obj.Dist = "40";
+            obj.CWeight = 100;
+            obj.Dist = "200";
+            obj.a = "Abnormal";
+            obj.CargoID = "00001";
 
-            DateTime exp = new DateTime(0, 0, 0, 01, 0, 0);
+            double exp = 3500;
 
-            DateTime act = obj.calcETA();
+            double act = obj.calcBCost();
 
             Assert.AreEqual(exp, act);
 
