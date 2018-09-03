@@ -26,6 +26,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.ActionLink("Customer Number", "Index", new { sortOrder = ViewBag.CustNameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
             @Html.ActionLink("Customer Name", "Index", new { sortOrder = ViewBag.CustNameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
@@ -55,6 +58,9 @@ else
     foreach (var item in Model)
     {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.CName)
         </td>

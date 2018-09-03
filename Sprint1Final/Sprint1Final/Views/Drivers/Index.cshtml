@@ -27,8 +27,10 @@
 <table class="table">
     <tr>
         <th>
+            @Html.ActionLink("Driver Number", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
             @Html.ActionLink("Driver Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
-            
         </th>
         <th>
             ID Number
@@ -62,6 +64,9 @@ else
 foreach (var item in Model)
 {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverNo)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.DName)
         </td>

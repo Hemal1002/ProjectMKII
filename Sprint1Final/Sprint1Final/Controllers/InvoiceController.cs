@@ -10,10 +10,14 @@ namespace Sprint1Final.Controllers
     public class InvoiceController : Controller
     {
         Sprint1DbEntities db = new Sprint1DbEntities();
+
+        
+
         // GET: Invoice
         public ActionResult Index()
         {
             List<Invoice> iList = new List<Invoice>();
+
             var datalist = (from j in db.Jobs
                             join c in db.Customers on j.CustomerID equals c.CustomerID
                             select new { j.JobID, c.CustomerID, c.CName, j.BasicCost }).ToList();
@@ -29,6 +33,7 @@ namespace Sprint1Final.Controllers
                 obj.FinalCost = obj.calcFinal();
                 iList.Add(obj);
             }
+
             return View(iList);
         }
     }
