@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sprint1Final.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Sprint1Final.Controllers
 {
@@ -15,31 +17,75 @@ namespace Sprint1Final.Controllers
         private Sprint1DbEntities db = new Sprint1DbEntities();
 
         // GET: Trucks
-        public ActionResult Index(string search, string option)
+        public ActionResult Index(string search, string option,string sortOrder, string currentFilter, int?page)
         {
             var trucks = db.Trucks.Include(t => t.TruckID);
-
-            if (option == "vn")
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.TruckSortParm = String.IsNullOrEmpty(sortOrder) ? "vin_desc" : "";
+            ViewBag.ModelSortParm = sortOrder == "model" ? "m_desc" : "model";
+            ViewBag.Mileage = sortOrder == "milage" ? "mile_desc" : "milage";
+            ViewBag.Weight = sortOrder == "weight" ? "w_desc" : "weight";
+            if (search != null)
             {
-                return View(db.Trucks.Where(x => x.Vin == search || search == null).ToList());
-            }
-            else if (option == "lp")
-            {
-                return View(db.Trucks.Where(x => x.LP == search || search == null).ToList());
-            }
-            else if (option == "ts")
-            {
-                return View(db.Trucks.Where(x => x.Tstat == search || search == null).ToList());
-            }
-            else if (option == "ch")
-            {
-                return View(db.Trucks.Where(x => x.Chassis == search || search == null).ToList());
+                page = 1;
             }
             else
             {
-                return View(db.Trucks.Where(x => x.TruckID == search || search == null).ToList());
+                search = currentFilter;
             }
-            return View(trucks.ToList());
+            ViewBag.CurrentFilter = search;
+            var truck = from t in db.Trucks select t;
+
+            if (option == "vn")
+            {
+                truck = truck.Where(x => x.Vin == search || search == null);
+            }
+            else if (option == "lp")
+            {
+                truck = truck.Where(x => x.LP == search || search == null);
+            }
+            else if (option == "ts")
+            {
+                truck = truck.Where(x => x.Tstat == search || search == null);
+            }
+            else if (option == "ch")
+            {
+                truck = truck.Where(x => x.Chassis == search || search == null);
+            }
+            else
+            {
+                truck = truck.Where(x => x.TruckID == search || search == null);
+            }
+            switch (sortOrder)
+            {
+                case "vin_desc":
+                    truck = truck.OrderByDescending(t=>t.Vin);
+                    break;
+                case "model":
+                    truck = truck.OrderBy(t => t.Model);
+                    break;
+                case "m_desc":
+                    truck = truck.OrderByDescending(t=>t.Model);
+                    break;
+                case "milage":
+                    truck = truck.OrderBy(t=>t.Milage);
+                    break;
+                case "mile_desc":
+                    truck = truck.OrderByDescending(t=>t.Milage);
+                    break;
+                case "weight":
+                    truck = truck.OrderBy(t=>t.Weight);
+                    break;
+                case "w_desc":
+                    truck = truck.OrderByDescending(t=>t.Weight);
+                    break;
+                default:
+                    truck = truck.OrderBy(t=>t.Vin);
+                    break;
+            }
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(truck.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Trucks/Details/5
