@@ -33,6 +33,8 @@ namespace Sprint1Final.Models
         [DisplayName("Driver Name")]
         public string DName { get; set; }
         [DisplayName("Driver ID Number")]
+        [MaxLength(13, ErrorMessage = "Enter a valid ID number")]
+        [MinLength(13, ErrorMessage = "Enter a valid ID number")]
         public string DriverID { get; set; }
         [DisplayName("Driver Liscence Code")]
         public string Licen { get; set; }
@@ -41,8 +43,12 @@ namespace Sprint1Final.Models
         [DisplayName("Address")]
         public string Adrs { get; set; }
         [DisplayName("Contact Number")]
+        [MinLength(10, ErrorMessage ="")]
+        [MaxLength(10, ErrorMessage ="")]
         public string ConNum { get; set; }
         [DisplayName("Next of Kin Contact Number")]
+        [MinLength(10, ErrorMessage = "")]
+        [MaxLength(10, ErrorMessage = "")]
         public string nokCNum { get; set; }
 
 

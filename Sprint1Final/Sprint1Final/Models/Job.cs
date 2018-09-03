@@ -42,15 +42,15 @@ namespace Sprint1Final.Models
         [DisplayName("End Location")]
         public string ELoc { get; set; }
 
-        [Required]
-        [DisplayName("Estimated Travel Time")]
+        
+        [DisplayName("Estimated Time Of Arrival")]
         public System.DateTime ETA { get; set; }
 
         [Required]
         [DisplayName("Trip Distance")]
         public string Dist { get; set; }
 
-        [Required]
+        
         [DisplayName("Basic Cost")]
         public double BasicCost { get; set; }
 
@@ -59,6 +59,7 @@ namespace Sprint1Final.Models
 
         [Required]
         [DisplayName("Cargo Height")]
+        [MaxLength(12, ErrorMessage = "Enter the height in meters")]
         public double CHeight { get; set; }
 
         [Required]
@@ -67,13 +68,14 @@ namespace Sprint1Final.Models
 
         [Required]
         [DisplayName("Cargo Width")]
+        [MaxLength(3, ErrorMessage = "The cargo width has to be three meters or below")]
         public double CWidth { get; set; }
 
         [Required]
         [DisplayName("Cargo Weight")]
         public double CWeight { get; set; }
 
-        [Required]
+        
         [DisplayName("Abnormal Load")]
         public string AbLoad { get; set; }
 
@@ -91,7 +93,7 @@ namespace Sprint1Final.Models
         [DisplayName("Actual Fuel Burned")]
         public Nullable<double> ActFuel { get; set; }
 
-        [Required]
+        
         [DisplayName("Alert")]
         public string Flag { get; set; }
 
@@ -108,6 +110,7 @@ namespace Sprint1Final.Models
         public string CargoID { get; set; }
 
         [Required]
+        
         [DisplayName("Driver No")]
         public string DriverNo { get; set; }
     
@@ -150,6 +153,8 @@ namespace Sprint1Final.Models
             return DateTime.Parse(a.ToString("00/00/00 00:00:00"));
         }
 
+        public string a = "";
+
         public double calcBCost()
         {
             double c = 0.0;
@@ -164,7 +169,8 @@ namespace Sprint1Final.Models
             x = (cw * (Convert.ToDouble(wr)) + (dist * (Convert.ToDouble(dr))));
             c = c + (x * (hz / 100));
 
-            if (checkAbLoad() == "Abnormal")
+            a = checkAbLoad();
+            if (a == "Abnormal")
             {
                 c = c + (x * 0.35);
 

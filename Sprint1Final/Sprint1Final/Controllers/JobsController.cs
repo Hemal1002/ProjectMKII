@@ -166,6 +166,10 @@ namespace Sprint1Final.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(job).State = EntityState.Modified;
+                job.BasicCost = job.calcBCost();
+                //job.ETA = job.calcETA();
+                job.AbLoad = job.checkAbLoad();
+                job.Flag = job.checkFlag();
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
