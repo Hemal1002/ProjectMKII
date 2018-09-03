@@ -1,15 +1,10 @@
-﻿@model IEnumerable<Sprint1Final.Models.Job>
+﻿@model PagedList.IPagedList<Sprint1Final.Models.Job>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
-    
 }
-
-
-
-
-
-
 
 <h2>Index</h2>
 
@@ -20,7 +15,7 @@
 
     @Html.RadioButton("option", "js") <text>Job status</text>
     @Html.RadioButton("option", "jd") <text>Job Driver</text>
-    @Html.TextBox("Search"); <input type="submit" value="Search" />
+    @Html.TextBox("Search", ViewBag.CurrentFilter as string); <input type="submit" value="Search" />
 }
 
 <p>
@@ -29,86 +24,87 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.JobID)
+            @Html.ActionLink("Job State", "Index", new { sortOrder = ViewBag.SortStatus, currentFilter = ViewBag.CurrentFilter }) 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.jState)
+            Start Location
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SLoc)
+            Start Time
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.STime)
+            End Location
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ELoc)
+           Estimated Time of Arrival
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ETA)
+            @Html.ActionLink("Trip Distance", "Index", new { sortOrder = ViewBag.SortDist, currentFilter = ViewBag.CurrentFilter })
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Dist)
+            @Html.ActionLink("Basic Cost", "Index", new { sortOrder = ViewBag.SortCost, currentFilter = ViewBag.CurrentFilter })
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BasicCost)
-        </th>
-<!--
-        <th>
-            @Html.DisplayNameFor(model => model.ActArrive)
+            Actual Arrival
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CHeight)
+            Cargo Height
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CLength)
+            Cargo Length
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CWidth)
+            Cargo Width
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CWeight)
-        </th>
--->
-        <th>
-            @Html.DisplayNameFor(model => model.AbLoad)
-        </th>
-<!--
-        <th>
-            @Html.DisplayNameFor(model => model.MBefore)
+            Cargo Weight
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MAfter)
+            Abnormal Load
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ExpctFuel)
+            Milage Before
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ActFuel)
-        </th>
--->
-        <th>
-            @Html.DisplayNameFor(model => model.Flag)
+            Milage After
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cargo.CType)
+            Expected Fuel
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Customer.CName)
+            Actual Fuel
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Driver.DName)
+            @Html.ActionLink("Alert", "Index", new { sortOrder = ViewBag.SortAlert, currentFilter = ViewBag.CurrentFilter })
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Truck.TruckID)
+            Cargo Type
+        </th>
+        <th>
+            Customer Name
+        </th>
+        <th>
+            Driver Name
+        </th>
+        <th>
+           Truck
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
+@if (Model.Count() == 0)
+{
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.JobID)
-        </td>
+        <td colspan="3"> Records not found </td>
+    </tr>
+}
+else
+{
+    foreach (var item in Model)
+    {
+    <tr>
         <td>
             @Html.DisplayFor(modelItem => item.jState)
         </td>
@@ -130,7 +126,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.BasicCost)
         </td>
-<!--
         <td>
             @Html.DisplayFor(modelItem => item.ActArrive)
         </td>
@@ -146,11 +141,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.CWeight)
         </td>
--->
         <td>
             @Html.DisplayFor(modelItem => item.AbLoad)
         </td>
-<!--
         <td>
             @Html.DisplayFor(modelItem => item.MBefore)
         </td>
@@ -163,7 +156,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.ActFuel)
         </td>
--->
         <td>
             @Html.DisplayFor(modelItem => item.Flag)
         </td>
@@ -177,14 +169,19 @@
             @Html.DisplayFor(modelItem => item.Driver.DName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Truck.TruckID)
+            @Html.DisplayFor(modelItem => item.Truck.Vin)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.JobID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.JobID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.JobID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.JobID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.JobID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.JobID })
         </td>
     </tr>
+    }
 }
-
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
