@@ -33,6 +33,8 @@ namespace Sprint1Final.Models
         [DisplayName("Driver Name")]
         public string DName { get; set; }
         [DisplayName("Driver ID Number")]
+        [MaxLength(13, ErrorMessage = "Enter a valid ID number")]
+        [MinLength(13, ErrorMessage = "Enter a valid ID number")]
         public string DriverID { get; set; }
         [DisplayName("Driver Liscence Code")]
         public string Licen { get; set; }
