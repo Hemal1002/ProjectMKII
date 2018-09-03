@@ -73,6 +73,11 @@ namespace Sprint1Final.Controllers
             
         }
 
+        public ActionResult Reset()
+        {
+            return View();
+        }
+
         // GET: Drivers/Details/5
         public ActionResult Details(string id)
         {

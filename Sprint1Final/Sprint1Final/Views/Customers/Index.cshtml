@@ -17,7 +17,7 @@
     <b>Search by : </b> @Html.RadioButton("option", "CustID")  <text> Customer ID</text>
     @Html.RadioButton("option", "CName") <text>Customer Name</text>  @Html.RadioButton("option", "CNum") <text>Contact Number</text>
     @Html.RadioButton("option", "em") <text>Email</text>
-    @Html.TextBox("Search", ViewBag.CurrentFilter as string); <input type="submit" value="Search" />
+    @Html.TextBox("Search", ViewBag.CurrentFilter as string); <input type="submit" value="Search" />    <button type="button" onclick="location.href='@Url.Action("Index","Customers")'">Reset</button>
 }
 
 <p>

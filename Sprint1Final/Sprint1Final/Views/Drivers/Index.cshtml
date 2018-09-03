@@ -15,10 +15,10 @@
      @Html.RadioButton("option", "dname")  <text> Driver Name</text>
     @Html.RadioButton("option", "did") <text>ID Number</text>  @Html.RadioButton("option", "lic") <text>License Code</text>
     @Html.RadioButton("option", "cnum") <text>Contact Number</text> 
-    @Html.TextBox("Search", ViewBag.CurrentFilter as string); <input type="submit" value="Search" />
+    @Html.TextBox("Search", ViewBag.CurrentFilter as string); <input type="submit" value="Search" />    <button type="button" onclick="location.href='@Url.Action("Index","Drivers")'">Reset</button>
 
 
-   
+
 }
 
 <p>
