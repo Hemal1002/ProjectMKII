@@ -34,7 +34,8 @@ namespace Sprint1Final.Models
         public string CName { get; set; }
         [Required]
         [DisplayName("Contact Number")]
-        
+        [MaxLength(10, ErrorMessage = "This is an invalid phone number")]
+        [MinLength(10, ErrorMessage = "This is an invalid phone number")]
         public string ConNum { get; set; }
         [Required]
         [DisplayName("Address")]
