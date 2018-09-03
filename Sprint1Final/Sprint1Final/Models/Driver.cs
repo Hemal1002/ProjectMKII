@@ -38,7 +38,7 @@ namespace Sprint1Final.Models
         public string Licen { get; set; }
         [DisplayName("Date of Employment")]
         public System.DateTime DOE { get; set; }
-        [DisplayName("Adddress")]
+        [DisplayName("Address")]
         public string Adrs { get; set; }
         [DisplayName("Contact Number")]
         public string ConNum { get; set; }

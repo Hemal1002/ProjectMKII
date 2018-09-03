@@ -1,18 +1,24 @@
-﻿@model IEnumerable<Sprint1Final.Models.Driver>
+﻿@model PagedList.IPagedList<Sprint1Final.Models.Driver>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Driver Table</h2>
 
-@using (Html.BeginForm("Index", "Driver", FormMethod.Get))
+@using (Html.BeginForm("Index", "Drivers", FormMethod.Get))
 {
 
-    <b>Search by : </b> @Html.RadioButton("option", "DriverNo")  <text> Driver Number</text>
+    <b>Search by : </b>    @Html.RadioButton("option", "drID")  <text> Driver Number</text>
+     @Html.RadioButton("option", "dname")  <text> Driver Name</text>
+    @Html.RadioButton("option", "did") <text>ID Number</text>  @Html.RadioButton("option", "lic") <text>License Code</text>
+    @Html.RadioButton("option", "cnum") <text>Contact Number</text> 
+    @Html.TextBox("Search", ViewBag.CurrentFilter as string); <input type="submit" value="Search" />
 
-    
-    @Html.TextBox("Search"); <input type="submit" value="Search" />
+
+   
 }
 
 <p>
@@ -21,30 +27,40 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DName)
+            @Html.ActionLink("Driver Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DriverID)
+            ID Number
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Licen)
+            License Code
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DOE)
+            @Html.ActionLink("Date of Employment", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Adrs)
+            Address
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ConNum)
+            Contact Number
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.nokCNum)
+           Next of Kin Number
         </th>
         <th></th>
     </tr>
+@if (Model.Count() == 0)
+{
+    <tr>
+        <td colspan="3"> Records not found </td>
+    </tr>
+}
+else
+{
 
-@foreach (var item in Model) {
+foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.DName)
@@ -68,11 +84,16 @@
             @Html.DisplayFor(modelItem => item.nokCNum)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DriverNo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DriverNo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DriverNo })
+            @Html.ActionLink("Edit", "Edit", new { id = item.DriverNo }) |
+            @Html.ActionLink("Details", "Details", new { id = item.DriverNo }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.DriverNo })
         </td>
     </tr>
-}
+}}
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

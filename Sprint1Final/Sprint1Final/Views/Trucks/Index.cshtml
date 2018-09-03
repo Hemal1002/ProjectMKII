@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Sprint1Final.Models.Truck>
+﻿@model PagedList.IPagedList<Sprint1Final.Models.Truck>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -13,7 +15,7 @@
     @Html.RadioButton("option", "vn") <text>VIN Number</text>  @Html.RadioButton("option", "lp") <text>License Plate</text>
     @Html.RadioButton("option", "ts") <text>Truck status</text> @Html.RadioButton("option", "make") <text>Make</text>
     @Html.RadioButton("option", "ch") <text>Chassis</text>
-    @Html.TextBox("Search"); <input type="submit" value="Search" />
+    @Html.TextBox("Search", ViewBag.CurrentFilter as string); <input type="submit" value="Search" />
 }
 
 <p>
@@ -22,63 +24,70 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Vin)
+            @Html.ActionLink("VIN Number", "Index", new { sortOrder = ViewBag.TruckSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LP)
+           License Plate
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tstat)
+            Truck Statuts
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Make)
+           Make
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Model)
+            @Html.ActionLink("Model ", "Index", new { sortOrder = ViewBag.ModelSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Chassis)
+            Chassis
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cabin)
+            Cabin
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Engine)
+            Engine
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Steering)
+            Steering
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Powert)
+           Power
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Torque)
+            Torque
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GearBox)
+            Gear Box
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TankCap)
+            Tank Cap
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Milage)
+            @Html.ActionLink("Milage ", "Index", new { sortOrder = ViewBag.Mileage, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Weight)
+            @Html.ActionLink("Weight ", "Index", new { sortOrder = ViewBag.Weight, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaxLoad)
+            Max Load
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PDate)
+            Purchase Date
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LSD)
+            Last Service Date
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
+@if (Model.Count() == 0)
+{
+    <tr>
+        <td colspan="3"> Records not found </td>
+    </tr>
+}
+else
+{
+    foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Vin)
@@ -135,11 +144,16 @@
             @Html.DisplayFor(modelItem => item.LSD)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TruckID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TruckID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TruckID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.TruckID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TruckID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TruckID })
         </td>
     </tr>
+    }
 }
-
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
