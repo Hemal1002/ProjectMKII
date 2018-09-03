@@ -24,6 +24,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.ActionLink("Truck Number", "Index", new { sortOrder = ViewBag.TruckSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
             @Html.ActionLink("VIN Number", "Index", new { sortOrder = ViewBag.TruckSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
@@ -89,6 +92,9 @@ else
 {
     foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TruckID)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Vin)
         </td>

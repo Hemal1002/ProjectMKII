@@ -23,6 +23,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.ActionLink("Cargo ID", "Index", new { sortOrder = ViewBag.CargoTypeSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
            @Html.ActionLink("Cargo Type", "Index", new { sortOrder = ViewBag.CargoTypeSortParm, currentFilter = ViewBag.CurrentFilter }) 
         </th>
         <th>
@@ -47,6 +50,9 @@
        foreach (var item in Model)
        {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CargoID)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.CType)
         </td>

@@ -111,10 +111,10 @@
             @Html.LabelFor(model => model.Steering, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.Steering,
-                 new List<SelectListItem>
-                 {
-                     new SelectListItem {Text = "One Steerable Axle"},
-                     new SelectListItem {Text = "Two Steerable Axle"}
+      new List<SelectListItem>
+      {
+                     new SelectListItem {Text = "One Steerable Axle" , Value ="1" },
+                     new SelectListItem {Text = "Two Steerable Axle", Value = "2"}
                  },
                  new {@class = "Select the number of steerable axles"})
                 @Html.ValidationMessageFor(model => model.Steering, "", new { @class = "text-danger" })

@@ -59,7 +59,7 @@ namespace Sprint1Final.Models
 
         [Required]
         [DisplayName("Cargo Height")]
-        [MaxLength(12, ErrorMessage = "Enter the height in meters")]
+        //[MaxLength(12, ErrorMessage = "Enter the height in meters")]
         public double CHeight { get; set; }
 
         [Required]
@@ -68,7 +68,7 @@ namespace Sprint1Final.Models
 
         [Required]
         [DisplayName("Cargo Width")]
-        [MaxLength(3, ErrorMessage = "The cargo width has to be three meters or below")]
+        //[MaxLength(3, ErrorMessage = "The cargo width has to be three meters or below")]
         public double CWidth { get; set; }
 
         [Required]
