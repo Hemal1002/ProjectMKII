@@ -36,7 +36,7 @@ namespace Sprint1Final.Models
         public string Vin { get; set; }
         [Required]
         [DisplayName("License Plate")]
-        [MinLength(10, ErrorMessage = "A license plate has to have 10 characters")]
+        [MinLength(3, ErrorMessage = "A license plate has to have at least 3 characters")]
         [MaxLength(10, ErrorMessage = "A license plate has to have 10 characters")]
         public string LP { get; set; }
         [Required]

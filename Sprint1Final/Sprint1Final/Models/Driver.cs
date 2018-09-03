@@ -41,8 +41,12 @@ namespace Sprint1Final.Models
         [DisplayName("Address")]
         public string Adrs { get; set; }
         [DisplayName("Contact Number")]
+        [MinLength(10, ErrorMessage ="")]
+        [MaxLength(10, ErrorMessage ="")]
         public string ConNum { get; set; }
         [DisplayName("Next of Kin Contact Number")]
+        [MinLength(10, ErrorMessage = "")]
+        [MaxLength(10, ErrorMessage = "")]
         public string nokCNum { get; set; }
 
 

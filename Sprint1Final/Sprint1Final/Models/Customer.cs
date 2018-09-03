@@ -34,6 +34,7 @@ namespace Sprint1Final.Models
         public string CName { get; set; }
         [Required]
         [DisplayName("Contact Number")]
+        
         public string ConNum { get; set; }
         [Required]
         [DisplayName("Address")]
@@ -42,6 +43,7 @@ namespace Sprint1Final.Models
         [DisplayName("Postal Address")]
         public string PostAdrs { get; set; }
         [Required]
+        [EmailAddress(ErrorMessage = "Invalid E-Mail address")]
         public string Email { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
