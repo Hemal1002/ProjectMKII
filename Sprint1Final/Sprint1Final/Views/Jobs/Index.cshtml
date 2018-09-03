@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Sprint1Final.Models.Job>
+﻿@model PagedList.IPagedList<Sprint1Final.Models.Job>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -6,14 +8,14 @@
 
 <h2>Index</h2>
 
-@using (Html.BeginForm("Index", "Jobs1", FormMethod.Get))
+@using (Html.BeginForm("Index", "Jobs", FormMethod.Get))
 {
 
     <b>Search by : </b> @Html.RadioButton("option", "JobID")  <text> Job ID</text>
 
     @Html.RadioButton("option", "js") <text>Job status</text>
     @Html.RadioButton("option", "jd") <text>Job Driver</text>
-    @Html.TextBox("Search"); <input type="submit" value="Search" />
+    @Html.TextBox("Search", ViewBag.CurrentFilter as string); <input type="submit" value="Search" />
 }
 
 <p>
@@ -22,75 +24,86 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.jState)
+            @Html.ActionLink("Job State", "Index", new { sortOrder = ViewBag.SortStatus, currentFilter = ViewBag.CurrentFilter }) 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SLoc)
+            Start Location
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.STime)
+            Start Time
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ELoc)
+            End Location
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ETA)
+           Estimated Time of Arrival
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Dist)
+            @Html.ActionLink("Trip Distance", "Index", new { sortOrder = ViewBag.SortDist, currentFilter = ViewBag.CurrentFilter })
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BasicCost)
+            @Html.ActionLink("Basic Cost", "Index", new { sortOrder = ViewBag.SortCost, currentFilter = ViewBag.CurrentFilter })
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ActArrive)
+            Actual Arrival
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CHeight)
+            Cargo Height
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CLength)
+            Cargo Length
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CWidth)
+            Cargo Width
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CWeight)
+            Cargo Weight
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AbLoad)
+            Abnormal Load
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MBefore)
+            Milage Before
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MAfter)
+            Milage After
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ExpctFuel)
+            Expected Fuel
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ActFuel)
+            Actual Fuel
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Flag)
+            @Html.ActionLink("Alert", "Index", new { sortOrder = ViewBag.SortAlert, currentFilter = ViewBag.CurrentFilter })
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cargo.CType)
+            Cargo Type
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Customer.CName)
+            Customer Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Driver.DName)
+            Driver Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Truck.Vin)
+           Truck
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
+@if (Model.Count() == 0)
+{
+    <tr>
+        <td colspan="3"> Records not found </td>
+    </tr>
+}
+else
+{
+    foreach (var item in Model)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.jState)
@@ -159,11 +172,16 @@
             @Html.DisplayFor(modelItem => item.Truck.Vin)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.JobID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.JobID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.JobID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.JobID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.JobID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.JobID })
         </td>
     </tr>
+    }
 }
-
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
