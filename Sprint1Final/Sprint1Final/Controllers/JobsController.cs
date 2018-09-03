@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sprint1Final.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Sprint1Final.Controllers
 {
@@ -15,32 +17,74 @@ namespace Sprint1Final.Controllers
         private Sprint1DbEntities db = new Sprint1DbEntities();
 
         // GET: Jobs
-        public ActionResult Index(string search, string option)
+        public ActionResult Index(string search, string option, string sortOrder ,string currentFilter , int? page)
         {
             var jobs = db.Jobs.Include(j => j.Cargo).Include(j => j.Customer).Include(j => j.Driver).Include(j => j.Truck);
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.SortStatus = String.IsNullOrEmpty(sortOrder) ? "status_desc" : "";
+            ViewBag.SortDist = sortOrder == "Dist" ? "dist_desc" : "Dist";
+            ViewBag.SortCost = sortOrder== "cost" ? "cost_desc" : "cost";
+            ViewBag.SortAlert = sortOrder == "alert" ? "alert_desc" : "alert";
+            if (search != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                search = currentFilter;
+            }
+            ViewBag.CurrentFilter = search;
+            var job = from j in db.Jobs select j;
 
             if (option == "js")
             {
-                return View(db.Jobs.Where(x => x.jState == search || search == null).ToList());
+                job = job.Where(x => x.jState == search || search == null); ;
             }
             else
             {
                 if (option == "jd")
                 {
-                    return View(db.Jobs.Where(x => x.DriverNo == search || search == null).ToList());
+                    job = job.Where(x => x.DriverNo == search || search == null); ;
                 }
                 else
                 {
-                    if (option == "JobID")
-                    {
-                        return View(db.Jobs.Where(x => x.JobID == search || search == null).ToList());
-                    }
+                        job = job.Where(x => x.JobID == search || search == null); ;
+                    
                 }
 
             }
+            switch (sortOrder)
+            {
+                case "status_desc":
+                    job = job.OrderByDescending(j => j.jState);
+                    break;
+                case "Dist":
+                    job = job.OrderBy(j => j.Dist);
+                    break;
+                case "dist_desc":
+                    job = job.OrderByDescending(j => j.Dist);
+                    break;
+                case "cost":
+                    job = job.OrderBy(j => j.BasicCost);
+                    break;
+                case "cost_desc":
+                    job = job.OrderByDescending(j => j.BasicCost);
+                    break;
+                case "alert":
+                    job = job.OrderBy(j => j.Flag);
+                    break;
+                case "alert_desc":
+                    job = job.OrderByDescending(j=>j.Flag);
+                    break;
+                default:
+                    job = job.OrderBy(j => j.jState);
+                    break;
+            }
 
-
-            return View(jobs.ToList());
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(job.ToPagedList(pageNumber, pageSize));
+            
         }
 
         // GET: Jobs/Details/5

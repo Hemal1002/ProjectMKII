@@ -30,5 +30,7 @@ namespace Sprint1Final.Models
         public virtual DbSet<Driver> Drivers { get; set; }
         public virtual DbSet<Job> Jobs { get; set; }
         public virtual DbSet<Truck> Trucks { get; set; }
+
+        public System.Data.Entity.DbSet<Sprint1Final.Models.Invoice> Invoices { get; set; }
     }
 }
