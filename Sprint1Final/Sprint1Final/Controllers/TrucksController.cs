@@ -88,6 +88,11 @@ namespace Sprint1Final.Controllers
             return View(truck.ToPagedList(pageNumber, pageSize));
         }
 
+        public ActionResult Reset()
+        {
+            return View();
+        }
+
         // GET: Trucks/Details/5
         public ActionResult Details(string id)
         {

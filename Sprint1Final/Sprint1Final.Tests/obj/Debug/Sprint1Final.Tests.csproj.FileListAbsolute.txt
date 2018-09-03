@@ -67,3 +67,6 @@ C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\obj\Debu
 C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Sprint1Final.Tests.dll.config
 C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\PagedList.dll
 C:\Users\masudh\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\PagedList.xml
+C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\Sprint1Final.Tests.dll.config
+C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\PagedList.dll
+C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final.Tests\bin\Debug\PagedList.xml

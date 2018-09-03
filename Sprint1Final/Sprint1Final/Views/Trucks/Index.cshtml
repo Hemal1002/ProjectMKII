@@ -15,7 +15,7 @@
     @Html.RadioButton("option", "vn") <text>VIN Number</text>  @Html.RadioButton("option", "lp") <text>License Plate</text>
     @Html.RadioButton("option", "ts") <text>Truck status</text> @Html.RadioButton("option", "make") <text>Make</text>
     @Html.RadioButton("option", "ch") <text>Chassis</text>
-    @Html.TextBox("Search", ViewBag.CurrentFilter as string); <input type="submit" value="Search" />
+    @Html.TextBox("Search", ViewBag.CurrentFilter as string); <input type="submit" value="Search" />    <button type="button" onclick="location.href='@Url.Action("Index","Drivers")'">Reset</button>
 }
 
 <p>

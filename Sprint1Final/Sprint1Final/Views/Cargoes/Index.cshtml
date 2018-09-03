@@ -14,7 +14,7 @@
     <b>Search by : </b> @Html.RadioButton("option", "CargoID")  <text> Cargo ID</text>
     @Html.RadioButton("option", "CType") <text>Cargo Type</text>  @Html.RadioButton("option", "Rate") <text>Cargo Rate</text>
     @Html.RadioButton("option", "WeightR") <text>Weight rate</text> @Html.RadioButton("option", "DR") <text>Distance Rate</text>
-    @Html.TextBox("Search",ViewBag.CurrentFilter as string); <input type="submit" value="Search" />
+    @Html.TextBox("Search",ViewBag.CurrentFilter as string); <input type="submit" value="Search" />    <button type="button" onclick="location.href='@Url.Action("Index","Cargoes")'">Reset</button>
 }
 
 <p>

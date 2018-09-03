@@ -87,8 +87,12 @@ namespace Sprint1Final.Controllers
             int pageNumber = (page ?? 1);
             return View(cargo.ToPagedList(pageNumber, pageSize));
 
-            
-            
+                        
+        }
+
+        public ActionResult Reset()
+        {
+            return View();
         }
 
         // GET: Cargoes/Details/5

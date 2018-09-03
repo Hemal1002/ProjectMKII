@@ -87,6 +87,12 @@ namespace Sprint1Final.Controllers
             
         }
 
+        public ActionResult Reset()
+        {
+            return View();
+        }
+
+
         // GET: Jobs/Details/5
         public ActionResult Details(string id)
         {
