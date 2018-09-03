@@ -14,6 +14,8 @@ namespace Sprint1Final.Controllers
     {
         private Sprint1DbEntities db = new Sprint1DbEntities();
 
+        
+
         // GET: Jobs
         public ActionResult Index(string search, string option)
         {
@@ -39,6 +41,7 @@ namespace Sprint1Final.Controllers
 
             }
 
+            
 
             return View(jobs.ToList());
         }

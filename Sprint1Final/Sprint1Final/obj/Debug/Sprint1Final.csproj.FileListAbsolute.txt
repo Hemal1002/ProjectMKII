@@ -156,3 +156,7 @@ C:\Users\User\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final\bin\System.Web.
 C:\Users\User\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final\obj\Debug\Sprint1Final.csprojResolveAssemblyReference.cache
 C:\Users\User\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final\obj\Debug\Sprint1Final.dll
 C:\Users\User\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final\obj\Debug\Sprint1Final.pdb
+C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final\bin\PagedList.dll
+C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final\bin\PagedList.Mvc.dll
+C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final\bin\PagedList.xml
+C:\Users\hemal\Source\Repos\ProjectMKII\Sprint1Final\Sprint1Final\bin\PagedList.Mvc.xml

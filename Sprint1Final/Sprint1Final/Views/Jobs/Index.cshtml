@@ -2,13 +2,18 @@
 
 @{
     ViewBag.Title = "Index";
+    
 }
 
-    
+
+
+
+
+
 
 <h2>Index</h2>
 
-@using (Html.BeginForm("Index", "Jobs1", FormMethod.Get))
+@using (Html.BeginForm("Index", "Jobs", FormMethod.Get))
 {
 
     <b>Search by : </b> @Html.RadioButton("option", "JobID")  <text> Job ID</text>
@@ -94,7 +99,7 @@
             @Html.DisplayNameFor(model => model.Driver.DName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Truck.Vin)
+            @Html.DisplayNameFor(model => model.Truck.TruckID)
         </th>
         <th></th>
     </tr>
@@ -172,7 +177,7 @@
             @Html.DisplayFor(modelItem => item.Driver.DName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Truck.Vin)
+            @Html.DisplayFor(modelItem => item.Truck.TruckID)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.JobID }) |
